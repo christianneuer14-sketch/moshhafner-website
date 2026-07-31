@@ -59,19 +59,65 @@ body::before {
 /* --- Kopf --- */
 
 .brand {
-  display: inline-block;
-  font-size: clamp(1.9rem, 5.4vw, 2.7rem);
+  display: block;
+  font-size: clamp(2.7rem, 9.5vw, 4.8rem);
   font-weight: 600;
-  letter-spacing: -0.022em;
+  letter-spacing: -0.032em;
+  line-height: 1.04;
   margin: 0;
-  text-decoration: none;
   color: var(--text);
+}
+
+/* Jeder Buchstabe steigt einzeln auf - einmalig beim Laden, kein Dauerzappeln. */
+.brand .ch {
+  display: inline-block;
+  animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  animation-delay: calc(var(--i) * 55ms);
+}
+
+.brand .sp {
+  display: inline-block;
+  width: 0.24em;
 }
 
 .brand .amp {
   color: var(--brand);
   font-style: italic;
-  padding: 0 0.06em;
+  animation:
+    rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) backwards,
+    glow 5s ease-in-out infinite;
+  animation-delay: calc(var(--i) * 55ms), 1.6s;
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.4em);
+    filter: blur(7px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+  }
+}
+
+@keyframes glow {
+  0%,
+  100% {
+    text-shadow: 0 0 0 rgba(255, 107, 53, 0);
+  }
+  50% {
+    text-shadow: 0 0 26px rgba(255, 107, 53, 0.5);
+  }
+}
+
+/* Wer im System "weniger Bewegung" eingestellt hat, bekommt die Seite ruhig. */
+@media (prefers-reduced-motion: reduce) {
+  .brand .ch,
+  .brand .amp {
+    animation: none;
+  }
 }
 
 .tagline {
