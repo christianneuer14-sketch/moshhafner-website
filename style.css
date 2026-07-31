@@ -1,0 +1,245 @@
+/* Mosh & Hafner — Studio-Seite
+   Bewusst ohne externe Ressourcen: keine CDN-Fonts, kein Analytics, keine Icons
+   von fremden Servern. Jeder externe Aufruf wuerde die IP-Adresse der Besucher an
+   Dritte geben - das passt weder zur Produkthaltung noch zur Rechtslage
+   (vgl. LG Muenchen I, 20.01.2022, Az. 3 O 17493/20 zu Google Fonts). */
+
+:root {
+  --bg: #08070A;
+  --bg-raised: #131117;
+  --edge: rgba(255, 255, 255, 0.09);
+  --text: #F2EFEA;
+  --text-muted: #A39D96;
+  --brand: #FF6B35;
+  --radius: 18px;
+  --measure: 62ch;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Warmer Lichtschein oben - das einzige dekorative Element der Seite. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    62rem 34rem at 50% -14rem,
+    rgba(255, 107, 53, 0.14),
+    transparent 68%
+  );
+}
+
+.wrap {
+  position: relative;
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: clamp(3rem, 9vw, 6.5rem) clamp(1.25rem, 5vw, 2rem) 4rem;
+}
+
+/* --- Kopf --- */
+
+.brand {
+  display: inline-block;
+  font-size: clamp(1.9rem, 5.4vw, 2.7rem);
+  font-weight: 600;
+  letter-spacing: -0.022em;
+  margin: 0;
+  text-decoration: none;
+  color: var(--text);
+}
+
+.brand .amp {
+  color: var(--brand);
+  font-style: italic;
+  padding: 0 0.06em;
+}
+
+.tagline {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+  margin: 0.55rem 0 0;
+}
+
+/* --- Text --- */
+
+h2 {
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin: 3.4rem 0 1rem;
+}
+
+h1.page-title {
+  font-size: clamp(1.6rem, 4.4vw, 2.1rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin: 0 0 2rem;
+}
+
+h3 {
+  font-size: 1.02rem;
+  font-weight: 600;
+  margin: 2rem 0 0.5rem;
+}
+
+p {
+  max-width: var(--measure);
+  margin: 0 0 1.1rem;
+}
+
+.lead {
+  font-size: 1.14rem;
+  margin-top: 2.4rem;
+}
+
+.muted {
+  color: var(--text-muted);
+}
+
+small {
+  font-size: 0.87rem;
+  line-height: 1.6;
+}
+
+a {
+  color: var(--brand);
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+}
+
+a:hover {
+  text-decoration-thickness: 2px;
+}
+
+ul {
+  max-width: var(--measure);
+  padding-left: 1.15rem;
+  margin: 0 0 1.1rem;
+}
+
+li {
+  margin-bottom: 0.45rem;
+}
+
+/* --- Bild --- */
+
+.portrait {
+  margin: 2.3rem 0 0.5rem;
+}
+
+.portrait img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--edge);
+}
+
+.portrait figcaption {
+  margin-top: 0.75rem;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+/* --- Karte --- */
+
+.card {
+  background: var(--bg-raised);
+  border: 1px solid var(--edge);
+  border-radius: var(--radius);
+  padding: clamp(1.3rem, 4vw, 1.9rem);
+  margin: 1.4rem 0;
+}
+
+.card p:last-child {
+  margin-bottom: 0;
+}
+
+.card-label {
+  display: inline-block;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--brand);
+  margin-bottom: 0.7rem;
+}
+
+/* Platzhalter, die vor dem Veroeffentlichen ersetzt werden muessen. */
+.todo {
+  background: rgba(255, 107, 53, 0.13);
+  border-bottom: 1px dashed var(--brand);
+  padding: 0.05em 0.35em;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+/* --- Fuss --- */
+
+footer {
+  margin-top: 4.5rem;
+  padding-top: 1.6rem;
+  border-top: 1px solid var(--edge);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem 1.6rem;
+  align-items: baseline;
+  font-size: 0.92rem;
+}
+
+footer a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+footer a:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
+
+footer .spacer {
+  margin-left: auto;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.back {
+  display: inline-block;
+  margin-bottom: 2rem;
+  font-size: 0.92rem;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.back:hover {
+  color: var(--text);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a,
+  footer a {
+    transition: color 0.15s ease;
+  }
+}
