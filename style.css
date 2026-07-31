@@ -68,11 +68,14 @@ body::before {
   color: var(--text);
 }
 
-/* Jeder Buchstabe steigt einzeln auf - einmalig beim Laden, kein Dauerzappeln. */
+/* Dramaturgie: "Mosh" baut sich langsam auf (--dur .95s, ~380 ms Abstand),
+   danach zwei Sekunden Stille, dann kommen "&" und "Hafner" in einem Rutsch.
+   Verzoegerung und Dauer stehen als --d / --dur am jeweiligen Buchstaben,
+   damit die Pause ablesbar ist statt in einer Formel zu verschwinden. */
 .brand .ch {
   display: inline-block;
-  animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) backwards;
-  animation-delay: calc(var(--i) * 55ms);
+  animation: rise var(--dur, 0.65s) cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  animation-delay: var(--d, 0ms);
 }
 
 .brand .sp {
@@ -84,9 +87,9 @@ body::before {
   color: var(--brand);
   font-style: italic;
   animation:
-    rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) backwards,
+    rise var(--dur, 0.65s) cubic-bezier(0.22, 1, 0.36, 1) backwards,
     glow 5s ease-in-out infinite;
-  animation-delay: calc(var(--i) * 55ms), 1.6s;
+  animation-delay: var(--d, 0ms), 5.2s;
 }
 
 @keyframes rise {
