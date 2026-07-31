@@ -38,6 +38,26 @@
         interessiert, und veröffentlichen das, was gut genug geworden ist.
       </p>
 
+      <div class="track">
+        <button class="track-play" type="button" aria-label="Abspielen">
+          <svg class="icon-play" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M8 5.4v13.2L19 12z" />
+          </svg>
+          <svg class="icon-pause" viewBox="0 0 24 24" aria-hidden="true" hidden>
+            <rect x="7.4" y="5.4" width="3.5" height="13.2" rx="1.1" />
+            <rect x="13.1" y="5.4" width="3.5" height="13.2" rx="1.1" />
+          </svg>
+        </button>
+        <div class="track-meta">
+          <span class="track-title">Wahrheit oder Pflicht¿</span>
+          <span class="track-sub">Atilla · 3:07</span>
+        </div>
+        <audio class="track-audio" preload="none">
+          <source src="wahrheit-oder-pflicht.m4a" type="audio/mp4" />
+          <source src="wahrheit-oder-pflicht.mp3" type="audio/mpeg" />
+        </audio>
+      </div>
+
       <h2>Woran wir gerade arbeiten</h2>
 
       <div class="card">
@@ -68,5 +88,36 @@
         <span class="spacer">Mosh &amp; Hafner</span>
       </footer>
     </main>
+
+    <script>
+      (function () {
+        var box = document.querySelector(".track");
+        if (!box) return;
+        var audio = box.querySelector(".track-audio");
+        var btn = box.querySelector(".track-play");
+        var play = box.querySelector(".icon-play");
+        var pause = box.querySelector(".icon-pause");
+
+        function render() {
+          var running = !audio.paused;
+          play.hidden = running;
+          pause.hidden = !running;
+          btn.setAttribute("aria-label", running ? "Pause" : "Abspielen");
+        }
+
+        btn.addEventListener("click", function () {
+          if (audio.paused) {
+            var p = audio.play();
+            if (p) p.catch(function () {});
+          } else {
+            audio.pause();
+          }
+        });
+
+        audio.addEventListener("play", render);
+        audio.addEventListener("pause", render);
+        audio.addEventListener("ended", render);
+      })();
+    </script>
   </body>
 </html>

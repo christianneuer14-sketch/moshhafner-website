@@ -163,6 +163,69 @@ li {
   color: var(--text-muted);
 }
 
+/* --- Track --- */
+
+.track {
+  display: flex;
+  align-items: center;
+  gap: 0.95rem;
+  max-width: var(--measure);
+  background: var(--bg-raised);
+  border: 1px solid var(--edge);
+  border-radius: var(--radius);
+  padding: 0.85rem 1.05rem;
+  margin: 1.9rem 0;
+}
+
+.track-play {
+  flex: none;
+  width: 2.85rem;
+  height: 2.85rem;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 107, 53, 0.45);
+  background: rgba(255, 107, 53, 0.12);
+  color: var(--brand);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+
+.track-play:hover {
+  background: rgba(255, 107, 53, 0.22);
+}
+
+.track-play:focus-visible {
+  outline: 2px solid var(--brand);
+  outline-offset: 3px;
+}
+
+.track-play svg {
+  width: 1.3rem;
+  height: 1.3rem;
+  fill: currentColor;
+}
+
+.track-play svg[hidden] {
+  display: none;
+}
+
+.track-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+  min-width: 0;
+}
+
+.track-title {
+  font-weight: 600;
+}
+
+.track-sub {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
 /* --- Karte --- */
 
 .card {
