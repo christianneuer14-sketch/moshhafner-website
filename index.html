@@ -117,6 +117,7 @@
           play.hidden = running;
           pause.hidden = !running;
           btn.setAttribute("aria-label", running ? "Pause" : "Abspielen");
+          box.classList.toggle("is-playing", running);
         }
 
         btn.addEventListener("click", function () {
